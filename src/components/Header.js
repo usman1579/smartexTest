@@ -11,31 +11,26 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import NativeAsyncLocalStorage from 'react-native/Libraries/Storage/NativeAsyncLocalStorage';
 
 const Header = props => {
   return (
     <SafeAreaView style={styles.floatContainer}>
       <TouchableOpacity onPress={props.onPress} style={styles.menu}>
-      {
-          props.detail ?
-          <Ionicons name={'chevron-back-outline'} size={30} color={'grey'}/>
-          :
+        {props.detail ? (
+          <Ionicons name={'chevron-back-outline'} size={30} color={'grey'} />
+        ) : (
           <Ionicons name={'menu'} color={'black'} size={30} />
-        }
-        
+        )}
       </TouchableOpacity>
 
       <View style={styles.titleContainer}>
         <Text style={styles.text}>{props.title}</Text>
-        {
-          props.detail ?
+        {props.id == null ? null : (
           <TouchableOpacity onPress={props.onPressDelete}>
-          <Ionicons name={'trash-outline'} size={30} color={'grey'}/>
+            <Ionicons name={'trash-outline'} size={30} color={'grey'} />
           </TouchableOpacity>
-          :
-          null
-        }
-       
+        )}
       </View>
     </SafeAreaView>
   );
@@ -65,10 +60,10 @@ const styles = StyleSheet.create({
   },
   titleContainer: {
     flex: 5,
-    flexDirection:'row',
-    alignItems:'center',
+    flexDirection: 'row',
+    alignItems: 'center',
     justifyContent: 'space-between',
-    marginRight:20
+    marginRight: 20,
   },
   text: {
     fontSize: 20,

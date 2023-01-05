@@ -55,9 +55,11 @@ const Detail = props => {
 
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
+      
       <Header
         detail={true}
         title={screen}
+        id={item.id}
         onPressDelete={() => onPressDelete(item)}
         onPress={() => props.navigation.goBack()}
       />
@@ -80,6 +82,7 @@ const Detail = props => {
           underlineColorAndroid={'grey'}
         />
       </View>
+
 
       <View
         style={{
