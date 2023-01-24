@@ -1,8 +1,8 @@
 import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import Header from './components/Header';
-import FloatingButton from './components/FloatingButton';
-import List from './components/List';
+import {Header} from './components/Header/Header';
+import {FloatingButton} from './components/FloatingButton/FloatingButton';
+import {List} from './components/List/List';
 
 const data = {
   title: '',
@@ -15,15 +15,20 @@ const data = {
 const Main = props => {
   return (
     <View style={styles.container}>
+      {/* Header Component */}
       <Header
         title={'Lista de tarefas'}
         onPress={() => props.navigation.toggleDrawer()}
       />
 
+      {/* Floating Button */}
       <FloatingButton
-        onPress={() => props.navigation.navigate('Detail', {item: data , screen :'Add Item'})}
+        onPress={() =>
+          props.navigation.navigate('Detail', {item: data, screen: 'Add Item'})
+        }
       />
 
+      {/* List Item to show the items of the List */}
       <List {...props} />
     </View>
   );

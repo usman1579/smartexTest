@@ -15,11 +15,17 @@ import {
 import {Provider as StoreProvider} from 'react-redux';
 import store from './src/redux/store';
 
+// Stack Navigator For Stack of Screens
 const Stack = createNativeStackNavigator();
+
+// Drawer Navigator For Side Menu
 const Drawer = createDrawerNavigator();
+
+// Static Image For Profile Photo
 const ImageURL =
   'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png';
 
+// Drawer Component
 function DrawerScreen() {
   return (
     <Drawer.Navigator
@@ -36,6 +42,7 @@ function DrawerScreen() {
   );
 }
 
+// Stack Navigator to put screens in Stack by React-Navigation library
 function MainStack() {
   return (
     <Stack.Navigator>
@@ -59,6 +66,7 @@ function MainStack() {
   );
 }
 
+// Custom Drwaer Navigator for the App
 function CustomDrawerContent(props) {
   return (
     <DrawerContentScrollView {...props}>
@@ -82,8 +90,11 @@ function CustomDrawerContent(props) {
   );
 }
 
+// // Main Stack of the Application Main Navigator where is the
+// Store Provider for redux state as well as parent navigator
 const App = () => {
   return (
+    // Store Provider For Redux For Global State management
     <StoreProvider store={store}>
       <NavigationContainer headerMode="none">
         <DrawerScreen />
@@ -122,7 +133,7 @@ const styles = StyleSheet.create({
     bottom: 10,
     flexDirection: 'row',
     marginHorizontal: 10,
-    justifyContent:'space-between',
-    alignItems:'center'
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
 });

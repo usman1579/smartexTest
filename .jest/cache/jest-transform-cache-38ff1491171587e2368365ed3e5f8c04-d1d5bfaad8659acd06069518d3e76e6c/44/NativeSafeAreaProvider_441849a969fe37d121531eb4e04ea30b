@@ -1,0 +1,19 @@
+b9431359560352e297057f16f8d4b714
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "NativeSafeAreaProvider", {
+  enumerable: true,
+  get: function get() {
+    return _NativeSafeAreaProvider.default;
+  }
+});
+var _NativeSafeAreaProvider = _interopRequireDefault(require("./specs/NativeSafeAreaProvider"));
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7QUFBQSIsIm5hbWVzIjpbXSwic291cmNlcyI6WyJOYXRpdmVTYWZlQXJlYVByb3ZpZGVyLnRzeCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgTmF0aXZlU2FmZUFyZWFQcm92aWRlciBmcm9tICcuL3NwZWNzL05hdGl2ZVNhZmVBcmVhUHJvdmlkZXInO1xuXG5leHBvcnQgeyBOYXRpdmVTYWZlQXJlYVByb3ZpZGVyIH07XG4iXX0=

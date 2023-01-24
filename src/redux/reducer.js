@@ -1,7 +1,6 @@
 import update from 'immutability-helper';
 
 export const addDataToList = val => {
-    console.log('val :::',val)
   return {
     type: 'DATA_LIST',
     payload:val,
@@ -23,7 +22,6 @@ const reducer = (state = InitialState, action) => {
   switch (action.type) {
     case 'DATA_LIST':
       let index = state.dataList?.findIndex(p => p.id == action.payload.id);
-      console.log('index', index)
       if (index == -1) {
         return {
           ...state,

@@ -4,9 +4,9 @@ import DatePicker from 'react-native-date-picker';
 import moment from 'moment';
 import DateView from './components/DateView';
 import {useDispatch} from 'react-redux';
-import FloatingButton from './components/FloatingButton';
+import {FloatingButton} from './components/FloatingButton/FloatingButton';
 import {addDataToList, deleteItem} from './redux/reducer';
-import Header from './components/Header';
+import {Header} from './components/Header/Header';
 import uuid from 'react-native-uuid';
 
 const Detail = props => {
@@ -55,7 +55,7 @@ const Detail = props => {
 
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
-      
+      {/* Header Component */}
       <Header
         detail={true}
         title={screen}
@@ -63,47 +63,26 @@ const Detail = props => {
         onPressDelete={() => onPressDelete(item)}
         onPress={() => props.navigation.goBack()}
       />
-      <View
-        style={{
-          height: 80,
-          width: '95%',
-          alignSelf: 'center',
-          marginHorizontal: 20,
-          marginTop: 10,
-        }}>
-        <Text style={{color: 'blue', fontSize: 12, fontWeight: '500'}}>
-          TiTle
-        </Text>
-        <TextInput
-          placeholder="type Here"
-          value={title}
-          onChangeText={title => setTitle(title)}
-          style={{height: 50, width: '100%', fontSize: 16}}
-          underlineColorAndroid={'grey'}
-        />
-      </View>
 
+      {/* TextInput Component For Input Title Field */}
+      <TitleComponent
+        title="Title"
+        value={title}
+        onChangeText={title => setTitle(title)}
+        Container={styles.titleContainer}
+        TextInput={styles.titleTextInput}
+      />
 
-      <View
-        style={{
-          height: 120,
-          width: '95%',
-          alignSelf: 'center',
-          marginHorizontal: 20,
-        }}>
-        <Text style={{color: 'blue', fontSize: 12, fontWeight: '500'}}>
-          Description
-        </Text>
-        <TextInput
-          multiline
-          placeholder="type Here"
-          value={description}
-          onChangeText={desc => setDescription(desc)}
-          style={{height: 100, width: '100%', fontSize: 16}}
-          underlineColorAndroid={'grey'}
-        />
-      </View>
+      {/* TextInput Component For Input Description Field */}
+      <TitleComponent
+        title="Description"
+        value={description}
+        onChangeText={desc => setDescription(desc)}
+        Container={styles.descriptionContainer}
+        TextInput={styles.descriptionTextInput}
+      />
 
+      {/* Modal View For Date and Time */}
       <View style={styles.dateView}>
         <DateView
           onPress={() => onPressDatePicker('date')}
@@ -118,6 +97,7 @@ const Detail = props => {
         />
       </View>
 
+      {/* Date Picker Library to pick the Date  */}
       <DatePicker
         mode={mode}
         modal
@@ -132,6 +112,7 @@ const Detail = props => {
         }}
       />
 
+      {/* Floating Button */}
       <FloatingButton type={'done'} onPress={onPressAddData} />
     </View>
   );
@@ -139,10 +120,43 @@ const Detail = props => {
 
 export default Detail;
 
+const TitleComponent = props => (
+  <View style={props.Container}>
+    <Text style={styles.titleText}>{props.title}</Text>
+    <TextInput
+      placeholder="type Here"
+      value={props.value}
+      onChangeText={props.onChangeText}
+      style={props.TextInput}
+      underlineColorAndroid={'grey'}
+    />
+  </View>
+);
+
 const styles = StyleSheet.create({
   dateView: {
     flexDirection: 'row',
     height: 70,
     width: '100%',
   },
+  titleContainer: {
+    height: 80,
+    width: '95%',
+    alignSelf: 'center',
+    marginHorizontal: 20,
+    marginTop: 10,
+  },
+  titleText: {
+    color: 'blue',
+    fontSize: 12,
+    fontWeight: '500',
+  },
+  titleTextInput: {height: 50, width: '100%', fontSize: 16},
+  descriptionContainer: {
+    height: 120,
+    width: '95%',
+    alignSelf: 'center',
+    marginHorizontal: 20,
+  },
+  descriptionTextInput: {height: 100, width: '100%', fontSize: 16},
 });
